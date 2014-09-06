@@ -1,4 +1,4 @@
-var testFile = 'https://raw.githubusercontent.com/MaxWofford/schedule-download/master/test.txt'; //Using GitHub to host testfile
+var testFile = 'https://raw.githubusercontent.com/MaxWofford/schedule-download/master/schedule-download.txt'; //Using GitHub to host testfile
 
 // Set up context menu at install time.
 chrome.runtime.onInstalled.addListener(function() {
