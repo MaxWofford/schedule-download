@@ -1,0 +1,1 @@
+This is a file that you can download to test if the 'scheduload' chrome extension is working on your machine. If you can see this file, congradulations!

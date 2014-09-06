@@ -5,19 +5,14 @@
   "description": "This extension lets you schedule downloads in the future by right-clicking on them",
   "version": "0.0.1",
   "browser_action": {
-    /*"default_icon": "img/icon.png",
-    "default_popup": "popup.html"*/
+    /*"default_icon": "img/icon.png",*/
+    "default_popup": "popup.html"
   },
   "permissions": [
     "storage",
     "contextMenus",
     "downloads"
   ],
-  /*"icons": {
-    "16": "icon-bitty.png",
-    "48": "icon-small.png",
-    "128": "icon-large.png"
-  },*/
   "background": {
     "persistent": true,
     "scripts": ["background.js"]

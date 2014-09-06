@@ -1,3 +1,5 @@
+var testFile = 'https://raw.githubusercontent.com/MaxWofford/schedule-download/master/test.txt'; //Using GitHub to host testfile
+
 // Set up context menu at install time.
 chrome.runtime.onInstalled.addListener(function() {
 	var context = "selection";
@@ -14,8 +16,14 @@ function onClickHandler(info, tab) {
 }
 
 function download(link) {
+	if (link.split('/')[link.split('/').length -1] = 'schedule-download.text') {
+		//Something test-specific here
+	};
 	chrome.downloads.download({
-		url: link,
-		filename: "suggested/filename/with/relative.path" // Optional
+		url: link
 	});
+}
+
+function testDowload() {
+	download(testFile);
 }
