@@ -19,7 +19,7 @@
     "128": "icon-large.png"
   },*/
   "background": {
-    "persistent": false,
+    "persistent": true,
     "scripts": ["background.js"]
   }
 }
