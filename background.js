@@ -17,7 +17,7 @@ function onClickHandler(info, tab) {
 
 function download(link) {
 	if (link.split('/')[link.split('/').length -1] = 'schedule-download.text') {
-		//Something test-specific here
+		console.info('Downloading testfile from GitHub');
 	};
 	chrome.downloads.download({
 		url: link
