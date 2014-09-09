@@ -1,10 +1,24 @@
 var testFile = 'https://raw.githubusercontent.com/MaxWofford/schedule-download/master/schedule-download.txt'; //Using GitHub to host testfile
+var scheduled = [];
+var link = null;
+var icon = null;
+var time = null;
+
+
 
 // Set up context menu at install time.
 chrome.runtime.onInstalled.addListener(function() {
-	var context = "selection";
+	var context = "link";
 	var title = "Schedule download...";
 	var id = chrome.contextMenus.create({"title": title, "contexts":[context], "id": "context" + context});	
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var link = document.getElementById('testButton');
+    link.addEventListener('click', function() {
+    	console.info('clicked');
+        testDowload();
+    });
 });
 
 // add click event
@@ -12,13 +26,25 @@ chrome.contextMenus.onClicked.addListener(onClickHandler);
 
 // The onClicked callback function.
 function onClickHandler(info, tab) {
+	link = info.linkUrl;
+	icon = tab.favIconUrl;
+	//time = 
+	console.info(info.linkUrl);
+	console.info(tab.favIconUrl);
+	var filetype = link.split('/')[link.split('/').length - 1]
+	if (filetype.indexOf(".") != -1) {
+		scheduleDownload(link, icon, time);
+		console.info('Scheduled to download a(n)', link.split('.')[link.split('.').length - 1], 'type file')
+	} else{
+		window.alert('This link has no filetype, download aborted')
+	};
+}
 
+function scheduleDownload(link,icon,time) {
+	scheduled.push({num: scheduled.length + 1, url: link, icon: icon, time: time})
 }
 
 function download(link) {
-	if (link.split('/')[link.split('/').length -1] = 'schedule-download.text') {
-		console.info('Downloading testfile from GitHub');
-	};
 	chrome.downloads.download({
 		url: link
 	});
@@ -26,4 +52,21 @@ function download(link) {
 
 function testDowload() {
 	download(testFile);
+	console.info('Downloading testfile from GitHub');
 }
+
+function generateScheduledDiv() {
+	for (var object in scheduled) {
+		console.log(scheduled[object].url.split('/')[scheduled[0].url.split('/').length -1]);
+		console.log(scheduled[object].icon);
+		console.log(scheduled[object].time);
+		var div = document.createElement('div');
+		div.className = 'listing';
+		document.getElementById('scheduled').appendChild(div);
+	};
+}
+
+window.onload = function() {
+	console.log('test')
+	generateScheduledDiv();
+};

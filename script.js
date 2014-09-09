@@ -1,7 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var link = document.getElementById('testButton');
-    link.addEventListener('click', function() {
-    	console.info('clicked');
-        testDowload();
-    });
-});
+function generateScheduledDiv() {
+	for (var objects in scheduled) {
+		console.log(objects)
+	};
+}
