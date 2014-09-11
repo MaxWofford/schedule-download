@@ -54,19 +54,3 @@ function testDowload() {
 	download(testFile);
 	console.info('Downloading testfile from GitHub');
 }
-
-function generateScheduledDiv() {
-	for (var object in scheduled) {
-		console.log(scheduled[object].url.split('/')[scheduled[0].url.split('/').length -1]);
-		console.log(scheduled[object].icon);
-		console.log(scheduled[object].time);
-		var div = document.createElement('div');
-		div.className = 'listing';
-		document.getElementById('scheduled').appendChild(div);
-	};
-}
-
-window.onload = function() {
-	console.log('test')
-	generateScheduledDiv();
-};
