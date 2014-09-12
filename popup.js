@@ -1,5 +1,11 @@
 var background = chrome.extension.getBackgroundPage();
-var scheduled = background.scheduled;
+var scheduled = background.scheduled; 
+var schedulediv = null;
+var note = null;
+function init() {
+	schedulediv = document.getElementById('scheduled');
+	note = document.getElementById('notify');
+}
 
 function generateScheduledDiv() {
 	for (var objects in scheduled) {
@@ -8,8 +14,8 @@ function generateScheduledDiv() {
 		var time = scheduled[objects].time;
 		var img = document.createElement('img');
 		var div = document.createElement('div');
-		document.getElementById('scheduled').appendChild(img);
-		document.getElementById('scheduled').appendChild(div);
+		schedulediv.appendChild(img);
+		schedulediv.appendChild(div);
 		img.className = 'icon';
 		img.src = icon;
 		div.innerHTML = file;
@@ -18,5 +24,30 @@ function generateScheduledDiv() {
 }
 
 window.onload = function() {
-	generateScheduledDiv();
+	init();
+
+	if (scheduled[0]) {
+		schedulediv.className = '';
+		clearNotify();
+		generateScheduledDiv();
+	} else{
+		notify('info', 'No downloads scheduled!');
+	};
+
+	note.addEventListener('click', function() {
+		clearNotify();
+	});
+	document.getElementById('testButton').addEventListener('click', function() {
+		console.info('clicked');
+		testDowload();
+	});
+}
+
+function notify(type, message) { //notification types are 'warn, info, success'
+	note.className = type;
+	note.innerHTML = message;
+}
+
+function clearNotify() {
+	note.className = 'hidden';
 }
