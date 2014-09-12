@@ -28,11 +28,10 @@ chrome.contextMenus.onClicked.addListener(onClickHandler);
 function onClickHandler(info, tab) {
 	link = info.linkUrl;
 	icon = tab.favIconUrl;
-	//time = 
-	console.info(info.linkUrl);
-	console.info(tab.favIconUrl);
-	var filetype = link.split('/')[link.split('/').length - 1]
-	if (filetype.indexOf(".") != -1) {
+	console.info(link);
+	console.info(icon);
+	var filetype = link.split('/')[link.split('/').length - 1];
+	if (filetype.split('.')[filetype.split('.').length - 1].length <= 4) {
 		scheduleDownload(link, icon, time);
 		console.info('Scheduled to download a(n)', link.split('.')[link.split('.').length - 1], 'type file')
 	} else{
