@@ -43,7 +43,13 @@ window.onload = function() {
 	});
 }
 
-function notify(type, message) { //notification types are 'warn, info, success'
+function testDowload() {
+	notify('info','Downloading testfile from GitHub');
+	download(testFile);
+	notify('success','Testfile successfully downloaded');
+}
+
+function notify(type, message) { // Notification types are 'warn, info, success'
 	note.className = type;
 	note.innerHTML = message;
 }

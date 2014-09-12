@@ -33,14 +33,14 @@ body {
 	border-radius: .2em;
 	margin: 1em;
 	padding: .5em;
+	color: white;
 }
 #notify.warn {
-
+	background-color: #C65155;
 }
 #notify.info {
-	color: white;
 	background-color: #9FC2FE;
 }
 #notify.success {
-
+	background-color: #77B172;
 }

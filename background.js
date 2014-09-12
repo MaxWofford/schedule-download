@@ -40,8 +40,3 @@ function download(link) {
 		url: link
 	});
 }
-
-function testDowload() {
-	download(testFile);
-	console.info('Downloading testfile from GitHub');
-}
