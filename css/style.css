@@ -25,6 +25,8 @@ body {
 }
 #scheduled {
 	border: rgba(0,0,0,0.6) 1px solid;
+	max-height: 15rem;
+	overflow: auto;
 }
 .hidden {
 	display: none;

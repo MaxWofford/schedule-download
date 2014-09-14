@@ -28,6 +28,7 @@ function generateScheduledDiv() {
 		var hr = document.createElement('hr');
 		schedulediv.appendChild(hr);
 	};
+	document.getElementById('downloadAll').className = '';
 }
 
 window.onload = function() {
@@ -45,8 +46,10 @@ window.onload = function() {
 		clearNotify();
 	});
 	document.getElementById('testButton').addEventListener('click', function() {
-		console.info('clicked');
 		testDowload();
+	});
+	document.getElementById('downloadAll').addEventListener('click', function() {
+		downloadAll();
 	});
 }
 
@@ -54,6 +57,13 @@ function testDowload() {
 	notify('info','Downloading testfile from GitHub');
 	download(testFile);
 	//notify('success','Testfile successfully downloaded');
+}
+
+function downloadAll() {
+	for (var objects in scheduled) {
+		var file = scheduled[objects].url;
+		download(file);
+	};
 }
 
 function notify(type, message) { // Notification types are 'warn, info, success'
