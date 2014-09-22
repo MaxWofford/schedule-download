@@ -20,6 +20,13 @@ function generateScheduledDiv() {
 		img.className = 'icon';
 		img.src = icon;
 		span.className = 'listing';
+
+		// Onclick of listing downloads file
+		span.addEventListener('click', function() {
+			download(scheduled[objects].url);
+		});
+
+		// Limit displayed name to 28 characters
 		if (file.length > 28) {
 			span.innerHTML = file.substr(0, 25) + '... .' + filetype;
 		} else{
@@ -34,20 +41,25 @@ function generateScheduledDiv() {
 window.onload = function() {
 	init();
 
+	//If downloads are scheduled, make a list of them
 	if (scheduled[0]) {
 		schedulediv.className = '';
 		clearNotify();
 		generateScheduledDiv();
 	} else{
+		// If there is nothing scheduled, notify
 		notify('info', 'No downloads scheduled!');
 	};
 
+	// Clear notifications onclick
 	note.addEventListener('click', function() {
 		clearNotify();
 	});
+	// Download test files
 	document.getElementById('testButton').addEventListener('click', function() {
 		testDowload();
 	});
+	// Download all queued files at once
 	document.getElementById('downloadAll').addEventListener('click', function() {
 		downloadAll();
 	});

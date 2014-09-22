@@ -1,5 +1,6 @@
 var testFile = 'https://raw.githubusercontent.com/MaxWofford/schedule-download/master/schedule-download.txt'; //Using GitHub to host testfile
 var scheduled = [];
+var history = [];
 var link = null;
 var icon = null;
 var time = null;
@@ -37,6 +38,18 @@ function scheduleDownload(link,icon,time) {
 
 function download(link) {
 	chrome.downloads.download({
-		url: link
+		url: link,
 	});
+}
+
+function callbackCake() {
+			//var move = scheduled(0);
+			var datetime = "Downloaded on " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+			//history.push({num: history.length + 1, url: move.url, icon: move.icon, time: datetime});
+			console.log(datetime);
 }
